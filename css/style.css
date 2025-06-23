@@ -612,6 +612,7 @@ img {
   opacity: 1;
   pointer-events: auto;
   visibility: visible;
+  display: none;
 }
 
 
