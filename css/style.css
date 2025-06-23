@@ -803,7 +803,9 @@ textarea.form-field {
     fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-
+.consent-icon {
+  fill: #f4f4fd;
+}
 
 .input-box:checked {
   background-color: #404bbf;
