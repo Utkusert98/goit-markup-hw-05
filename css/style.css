@@ -788,22 +788,38 @@ textarea.form-field {
 }
 
 .consent-visible {
-  display: inline-flex;
-  width: 16px;
-  height: 16px;
-  border-radius: 2px;
-  margin-right: 8px;
-  border: 1px solid rgba(46, 47, 66, 0.4);
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    margin-right: 8px;
+    border: 1px solid rgba(46, 47, 66, 0.4);
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    /* Eski 'fill: transparent;' yerine aşağıdaki satırı ekleyin veya değiştirin */
+    fill: transparent; /* Varsayılan olarak şeffaf, iconun görünmemesi için */
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+                border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+                fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .consent-icon {
-  fill: #f4f4fd;
+    fill: #f4f4fd; /* SVG'nin dolgu rengi */
+    opacity: 0; /* Başlangıçta gizli */
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1); /* Geçiş efekti */
+}
+.input-box:checked + .consent-visible {
+    background-color: #404bbf;
+    border: none;
+    /* Buradaki fill: #f4f4fd; input-box'a değil, aslında .consent-visible'a uygulanıyor olabilir.
+       Aşağıdaki gibi .consent-icon'a fill vererek daha kontrollü yapalım. */
+    /* fill: #f4f4fd; bu satırı kaldırabilirsiniz */
+}
+
+.input-box:checked + .consent-visible .consent-icon {
+    opacity: 1;
+    fill: #f4f4fd; /* SVG'nin dolgu rengi */
 }
 
 .input-box:checked {
